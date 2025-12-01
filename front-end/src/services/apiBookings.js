@@ -1,0 +1,47 @@
+import { LIST_SIZE } from "../utils/constants";
+
+export async function getBookings({ filter, sortBy, page }) {
+  const res = await fetch("http://localhost:5000/api/bookings");
+  if (!res.ok) {
+    throw new Error("Failed to fetch bookings");
+  }
+
+  const data = await res.json();
+
+  if (filter) {
+    return data.filter((booking) => booking[filter.field] === filter.value);
+  }
+
+  if (sortBy) {
+    if (sortBy.field === "date") {
+      data.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return sortBy.direction === "asc" ? dateA - dateB : dateB - dateA;
+      });
+    } else {
+      data.sort((a, b) =>
+        sortBy.direction === "asc"
+          ? a[sortBy.field] - b[sortBy.field]
+          : b[sortBy.field] - a[sortBy.field]
+      );
+    }
+  }
+  if (page) {
+    const from = (page - 1) * LIST_SIZE;
+    const to = from + LIST_SIZE;
+    return { data: data.slice(from, to), count: data.length };
+  }
+
+  return { data, count: data.length };
+}
+
+export async function getBookingById(bookingId) {
+  const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch booking");
+  }
+  const data = await res.json();
+
+  return data;
+}
