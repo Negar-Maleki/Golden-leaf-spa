@@ -13,6 +13,7 @@ A modern spa booking management system built with React and Node.js, featuring r
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **React** - UI framework
 - **React Router** - Navigation
 - **React Query** - Data fetching and caching
@@ -22,6 +23,7 @@ A modern spa booking management system built with React and Node.js, featuring r
 - **React Hot Toast** - Notifications
 
 ### Backend
+
 - **Node.js** - Runtime
 - **Express** - Web framework
 - **Prisma** - ORM
@@ -81,61 +83,38 @@ npm run dev
 
 The frontend will run on `http://localhost:5173`
 
-## 📁 Project Structure
-
-```
-golden-leaf-spa/
-├── back-end/
-│   ├── prisma/
-│   │   ├── schema.prisma      # Database schema
-│   │   ├── migrations/        # Migration history
-│   │   ├── seed.js           # Seed script
-│   │   └── data/             # Seed data files
-│   ├── routes/               # API routes
-│   ├── server/
-│   │   └── index.js          # Express server
-│   └── package.json
-│
-└── front-end/
-    ├── src/
-    │   ├── features/         # Feature modules
-    │   │   ├── bookings/
-    │   │   ├── services/
-    │   │   └── settings/
-    │   ├── ui/               # Reusable UI components
-    │   ├── services/         # API services
-    │   ├── pages/            # Page components
-    │   └── utils/            # Utility functions
-    └── package.json
-```
-
 ## 🔑 Key Endpoints
 
 ### Services
+
 - `GET /api/services` - Get all services
 - `POST /api/services` - Create a service
 - `PUT /api/services/:id` - Update a service
 - `DELETE /api/services/:id` - Delete a service
 
 ### Customers
+
 - `GET /api/customers` - Get all customers
 - `POST /api/customers` - Create a customer
 - `PUT /api/customers/:id` - Update a customer
 - `DELETE /api/customers/:id` - Delete a customer
 
 ### Bookings
+
 - `GET /api/bookings` - Get all bookings
 - `POST /api/bookings` - Create a booking
 - `PUT /api/bookings/:id` - Update a booking
 - `DELETE /api/bookings/:id` - Delete a booking
 
 ### Settings
+
 - `GET /api/settings` - Get settings
 - `PUT /api/settings` - Update settings
 
 ## 🗄️ Database Schema
 
 ### Models
+
 - **Service**: Spa services with pricing and duration
 - **Customer**: Customer information
 - **Booking**: Appointments linking customers and services
@@ -144,12 +123,14 @@ golden-leaf-spa/
 ## 🔧 Available Scripts
 
 ### Backend
+
 - `npm run dev` - Start development server
 - `npx prisma migrate dev` - Run database migrations
 - `npx prisma db seed` - Seed the database
 - `npx prisma studio` - Open Prisma Studio GUI
 
 ### Frontend
+
 - `npm run dev` - Start Vite dev server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
@@ -158,6 +139,7 @@ golden-leaf-spa/
 ## 🎨 UI Components
 
 Custom reusable components include:
+
 - Form elements (Input, Textarea, FileInput, Select)
 - Buttons (primary, secondary, danger variations)
 - Modals and confirmations

@@ -10,7 +10,7 @@ import { formatDistanceFromNow } from "../../utils/helpers";
 import { useServices } from "../sevices/useServices";
 import { useCustomers } from "./useCustomers";
 import Menus from "../../ui/Menus";
-import { HiEye } from "react-icons/hi2";
+import { HiArrowDownOnSquare, HiEye } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 
 const Cabin = styled.div`
@@ -43,7 +43,6 @@ const Amount = styled.div`
 function BookingRow({
   booking: {
     id: bookingId,
-    createdAt,
     date,
     duration,
     notes,
@@ -119,10 +118,18 @@ function BookingRow({
         <Menus.List id={bookingId}>
           <Menus.Button
             icon={<HiEye />}
-            onClick={navigate(`/bookings/${bookingId}`)}
+            onClick={() => navigate(`/bookings/${bookingId}`)}
           >
             See details
           </Menus.Button>
+          {status === "PENDING" && (
+            <Menus.Button
+              icon={<HiArrowDownOnSquare />}
+              onClick={() => navigate(`/checkin/${bookingId}`)}
+            >
+              Check in
+            </Menus.Button>
+          )}
         </Menus.List>
       </Menus.Menu>
     </Table.Row>

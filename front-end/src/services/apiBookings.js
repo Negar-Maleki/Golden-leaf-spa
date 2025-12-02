@@ -45,3 +45,27 @@ export async function getBookingById(bookingId) {
 
   return data;
 }
+
+export async function updateBooking(bookingId, bookingData) {
+  let res;
+  if (!bookingId) {
+    res = await fetch(`http://localhost:5000/api/bookings`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
+  } else {
+    res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingData),
+    });
+  }
+  if (!res.ok) {
+    throw new Error("Failed to create booking");
+  }
+  const data = res.json();
+  return data;
+}

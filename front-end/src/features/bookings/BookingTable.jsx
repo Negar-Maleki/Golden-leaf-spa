@@ -15,7 +15,6 @@ function BookingTable() {
   if (isLoading) {
     return <Spinner />;
   }
-  console.log(bookings);
 
   return (
     <Menus>
