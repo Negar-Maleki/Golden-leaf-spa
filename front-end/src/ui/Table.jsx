@@ -1,3 +1,4 @@
+/*eslint-disable react/prop-types */
 import { createContext, useContext } from "react";
 import styled from "styled-components";
 
@@ -86,11 +87,12 @@ function Row({ children }) {
   );
 }
 function Body({ data, render }) {
-  if (data.length === 0) {
+  if (!data) {
     return <Empty>No data available.</Empty>;
   }
+  const items = Array.isArray(data) ? data : [];
 
-  return <StyledBody>{data.map(render)}</StyledBody>;
+  return <StyledBody>{items.map(render)}</StyledBody>;
 }
 
 Table.Header = Header;

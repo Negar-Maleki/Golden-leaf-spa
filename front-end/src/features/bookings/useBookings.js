@@ -13,6 +13,7 @@ export function useBookings() {
   if (filteredValue && filteredValue !== "all") {
     filter = { field: "status", value: filteredValue };
   }
+
   const sortByRaw = searchParams.get("sortBy") || "date-desc";
 
   const lastHyphen = sortByRaw.lastIndexOf("-");
@@ -29,6 +30,7 @@ export function useBookings() {
   });
 
   const pageCount = Math.ceil(count / LIST_SIZE);
+
   if (page < pageCount) {
     queryClient.prefetchQuery({
       queryKey: ["bookings", filter, sortBy, page + 1],
@@ -41,5 +43,6 @@ export function useBookings() {
       queryFn: () => getBookings({ filter, sortBy, page: page - 1 }),
     });
   }
-  return { bookings, isLoading, count };
+
+  return { isLoading, bookings };
 }

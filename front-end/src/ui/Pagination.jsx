@@ -65,7 +65,7 @@ function Pagination({ count }) {
     ? 1
     : Number(searchParams.get("page"));
 
-  const pageCount = Math.ceil(count / LIST_SIZE);
+  const pageCount = Math.ceil(Number(count) / Number(LIST_SIZE));
 
   function nextPage() {
     const nextPage = Math.min(currentPage + 1, pageCount);

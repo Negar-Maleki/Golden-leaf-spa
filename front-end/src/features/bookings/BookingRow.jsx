@@ -10,8 +10,9 @@ import { formatDistanceFromNow } from "../../utils/helpers";
 import { useServices } from "../sevices/useServices";
 import { useCustomers } from "./useCustomers";
 import Menus from "../../ui/Menus";
-import { HiArrowDownOnSquare, HiEye } from "react-icons/hi2";
+import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import { useCheckOut } from "../check-in-out/useCheckout";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -54,11 +55,13 @@ function BookingRow({
 }) {
   const { services } = useServices();
   const { customers } = useCustomers();
+  const { checkout, isCheckingOut } = useCheckOut();
   const navigate = useNavigate();
   const statusToTagName = {
     PENDING: "blue",
     CONFIRMED: "green",
     COMPLETED: "silver",
+    CANCELLED: "red",
   };
 
   const serviceName = services?.filter((service) => service.id === serviceId)[0]
@@ -128,6 +131,15 @@ function BookingRow({
               onClick={() => navigate(`/checkin/${bookingId}`)}
             >
               Check in
+            </Menus.Button>
+          )}
+          {status === "CONFIRMED" && (
+            <Menus.Button
+              icon={<HiArrowUpOnSquare />}
+              onClick={() => checkout(bookingId)}
+              disabled={isCheckingOut}
+            >
+              Check out
             </Menus.Button>
           )}
         </Menus.List>

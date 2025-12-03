@@ -33,6 +33,7 @@ function BookingDetail() {
   const statusToTagName = {
     PENDING: "blue",
     CONFIRMED: "green",
+    CANCELLED: "red",
     COMPLETED: "silver",
   };
 

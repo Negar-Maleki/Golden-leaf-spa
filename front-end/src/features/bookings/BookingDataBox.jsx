@@ -186,7 +186,7 @@ function BookingDataBox({ booking }) {
                 )} service + ${formatCurrency(
                   Number(settings[0]?.drinkPrice)
                 )} drink)`
-              : `${formatCurrency(Number(service.price))} service`}
+              : ""}
           </DataItem>
 
           <p>{paid ? "Paid" : "Will pay at property"}</p>
