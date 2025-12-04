@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
-import FormRowVertical from "../../ui/FormRowVertical";
+// import FormRowVertical from "../../ui/FormRowVertical";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ function LoginForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <FormRowVertical label="Email address">
+      {/* <FormRowVertical label="Email address">
         <Input
           type="email"
           id="email"
@@ -33,7 +33,7 @@ function LoginForm() {
       </FormRowVertical>
       <FormRowVertical>
         <Button size="large">Login</Button>
-      </FormRowVertical>
+      </FormRowVertical> */}
     </Form>
   );
 }

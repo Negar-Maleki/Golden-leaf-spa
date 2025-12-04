@@ -16,10 +16,11 @@ import Menus from "../../ui/Menus";
 const Img = styled.img`
   display: block;
   width: 6.4rem;
+
   aspect-ratio: 2 / 2.4;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.5) translateX(-7px);
+  transform: scale(1.8) translateX(-7px);
 `;
 
 const Service = styled.div`
@@ -85,7 +86,7 @@ function ServiceRow({ service }) {
 
             <Modal.Content name="delete">
               <ConfirmDelete
-                resource="service"
+                resourceName="service"
                 disabled={isDeleting}
                 onConfirm={() => deleteService(id)}
               />

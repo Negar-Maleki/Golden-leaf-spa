@@ -41,7 +41,7 @@ function ServiceTable() {
   }
   return (
     <Menus>
-      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+      <Table columns="1fr 2fr 3fr 1fr 1fr 1fr">
         <Table.Header>
           <div role="columnheader">Image</div>
           <div role="columnheader">Name</div>

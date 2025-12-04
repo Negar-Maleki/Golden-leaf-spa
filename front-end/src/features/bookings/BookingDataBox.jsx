@@ -79,9 +79,9 @@ const Price = styled.div`
   margin-top: 2.4rem;
 
   background-color: ${(props) =>
-    props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
+    props.$paid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
   color: ${(props) =>
-    props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
+    props.$paid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
 
   & p:last-child {
     text-transform: uppercase;
@@ -129,7 +129,7 @@ function BookingDataBox({ booking }) {
         <div>
           <HiOutlineHeart />
           <p>
-            {duration} minutes of <div>{service.name}</div>
+            {duration} minutes of <span>{service.name}</span>
           </p>
         </div>
 
@@ -165,7 +165,7 @@ function BookingDataBox({ booking }) {
           {drink ? "Yes" : "No"}
         </DataItem>
 
-        <Price isPaid={paid}>
+        <Price $paid={paid}>
           <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
             {formatCurrency(totalPrice)}
 

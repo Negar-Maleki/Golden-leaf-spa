@@ -39,5 +39,4 @@ export async function deleteService(serviceId) {
   if (!res.ok) {
     throw new Error("Failed to delete service");
   }
-  return res.json();
 }

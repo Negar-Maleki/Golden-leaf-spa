@@ -27,6 +27,7 @@ export async function getBookings({ filter, sortBy, page }) {
       );
     }
   }
+  const count = data.length;
 
   if (page) {
     const from = (page - 1) * LIST_SIZE;
@@ -35,7 +36,7 @@ export async function getBookings({ filter, sortBy, page }) {
     data = data.slice(from, to);
   }
 
-  return { data };
+  return { data, count };
 }
 
 export async function getBookingById(bookingId) {
@@ -70,4 +71,13 @@ export async function updateBooking(bookingId, bookingData) {
   }
   const data = res.json();
   return data;
+}
+
+export async function deleteBookingApi(bookingId) {
+  const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) {
+    throw new Error("Faild to delete booking");
+  }
 }
