@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
 :root {
   /* Indigo */
-  --color-brand-50: #ffec99;
+  --color-brand-50: #f6ecc2ff;
   --color-brand-100: #ffe066;
   --color-brand-200: #ffd43b;
   --color-brand-500: #fcc419;

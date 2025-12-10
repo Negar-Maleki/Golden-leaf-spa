@@ -14,6 +14,8 @@ import Booking from "./pages/Booking";
 import GlobalStyles from "./styles/GlobalStyles";
 import AppLayout from "./ui/AppLayout";
 import Checkin from "./pages/checkin";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import GoogleCallbackHandler from "./ui/GoogleCallbackHandler";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,8 +33,16 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AppLayout />}>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="/" element={<GoogleCallbackHandler />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
             <Route path="bookings/:bookingId" element={<Booking />} />

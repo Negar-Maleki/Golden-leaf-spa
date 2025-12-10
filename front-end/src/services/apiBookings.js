@@ -1,7 +1,9 @@
 import { LIST_SIZE } from "../utils/constants";
 
 export async function getBookings({ filter, sortBy, page }) {
-  const res = await fetch("http://localhost:5000/api/bookings");
+  const res = await fetch("http://localhost:5000/api/bookings", {
+    credentials: "include",
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch bookings");
   }
@@ -40,7 +42,9 @@ export async function getBookings({ filter, sortBy, page }) {
 }
 
 export async function getBookingById(bookingId) {
-  const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`);
+  const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
+    credentials: "include",
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch booking");
   }
@@ -58,12 +62,14 @@ export async function updateBooking(bookingId, bookingData) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(bookingData),
+      credentials: "include",
     });
   } else {
     res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bookingData),
+      credentials: "include",
     });
   }
   if (!res.ok) {
@@ -76,6 +82,7 @@ export async function updateBooking(bookingId, bookingData) {
 export async function deleteBookingApi(bookingId) {
   const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}`, {
     method: "DELETE",
+    credentials: "include",
   });
   if (!res.ok) {
     throw new Error("Faild to delete booking");

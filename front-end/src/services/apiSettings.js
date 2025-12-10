@@ -1,5 +1,7 @@
 export async function getSettings() {
-  const res = await fetch("http://localhost:5000/api/settings");
+  const res = await fetch("http://localhost:5000/api/settings", {
+    credentials: "include",
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch settings");
   }
@@ -15,6 +17,7 @@ export async function updateSetting(newSetting) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(newSetting),
+    credentials: "include",
   });
   if (!res.ok) {
     throw new Error("Failed to update setting");
