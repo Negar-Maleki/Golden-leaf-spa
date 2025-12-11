@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
+import { useRecentBookings } from "../dashboard/useRecentBooking";
+import { isSameDay } from "date-fns";
 
 const StyledToday = styled.div`
   /* Box */
@@ -36,7 +38,15 @@ const NoActivity = styled.p`
   margin-top: 0.8rem;
 `;
 
-function Today() {
+function TodayActivity() {
+  const { bookings } = useRecentBookings();
+  const today = new Date().toISOString();
+  console.log(bookings);
+  const todayBookings = bookings.filter((booking) =>
+    isSameDay(new Date(booking.date), today)
+  );
+  console.log(todayBookings);
+
   return (
     <StyledToday>
       <Row type="horizontal">
@@ -46,4 +56,4 @@ function Today() {
   );
 }
 
-export default Today;
+export default TodayActivity;

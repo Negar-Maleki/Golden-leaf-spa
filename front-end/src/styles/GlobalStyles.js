@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
 
 &, &.light-mode{
   /* Grey */
-  --color-grey-0: #fff;
+  --color-grey-0: #ffffffff;
   --color-grey-50: #fbfaf9ff;
   --color-grey-100: #f6f4f3ff;
   --color-grey-200: #ebe6e5ff;

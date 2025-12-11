@@ -1,5 +1,17 @@
 import { LIST_SIZE } from "../utils/constants";
 
+export async function getAllBookings() {
+  const res = await fetch("http://localhost:5000/api/bookings", {
+    credentials: "include",
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch bookings");
+  }
+  const data = await res.json();
+
+  return data;
+}
+
 export async function getBookings({ filter, sortBy, page }) {
   const res = await fetch("http://localhost:5000/api/bookings", {
     credentials: "include",
