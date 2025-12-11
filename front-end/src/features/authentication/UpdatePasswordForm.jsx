@@ -12,14 +12,14 @@ function UpdatePasswordForm() {
 
   const { updateUser, isUpdating } = useUpdateUser();
 
-  function onSubmit({ password }) {
-    updateUser({ password }, { onSuccess: reset });
+  function onSubmit({ newPassword }) {
+    updateUser({ newPassword }, { onSuccess: reset });
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow
-        label="Password (min 8 characters)"
+        label="New password (min 8 characters)"
         error={errors?.password?.message}
       >
         <Input
@@ -27,7 +27,7 @@ function UpdatePasswordForm() {
           id="password"
           autoComplete="current-password"
           disabled={isUpdating}
-          {...register("password", {
+          {...register("newPassword", {
             required: "This field is required",
             minLength: {
               value: 8,

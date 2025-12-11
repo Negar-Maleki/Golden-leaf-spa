@@ -22,17 +22,18 @@ const Avatar = styled.img`
 function UserAvatar() {
   const { user } = useUser();
 
+  const getAvatarUrl = (avatar) => {
+    if (!avatar)
+      return `https://avatar.iran.liara.run/public/boy?username=${encodeURIComponent(
+        user?.name || "User"
+      )}`;
+    if (avatar.startsWith("http")) return avatar;
+    return `http://localhost:5000${avatar}`;
+  };
+
   return (
     <StyledUserAvatar>
-      <Avatar
-        src={
-          user?.avatar ||
-          `https://avatar.iran.liara.run/public/boy?username=${encodeURIComponent(
-            user?.name || "User"
-          )}`
-        }
-        alt="User Avatar"
-      />
+      <Avatar src={getAvatarUrl(user?.avatar)} alt="User Avatar" />
       <span>{user?.name || "User"}</span>
     </StyledUserAvatar>
   );
