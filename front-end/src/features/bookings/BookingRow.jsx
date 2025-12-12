@@ -19,7 +19,7 @@ import { formatDistanceFromNow } from "../../utils/helpers";
 import { useServices } from "../sevices/useServices";
 import { useCustomers } from "./useCustomers";
 import { useNavigate } from "react-router-dom";
-import { useCheckOut } from "../check-in-out/useCheckout";
+import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
 
 const Cabin = styled.div`
@@ -63,7 +63,7 @@ function BookingRow({
 }) {
   const { services } = useServices();
   const { customers } = useCustomers();
-  const { checkout, isCheckingOut } = useCheckOut();
+  const { checkout, isCheckingOut } = useCheckout();
   const { isDeleting, deleteBooking } = useDeleteBooking();
   const navigate = useNavigate();
 

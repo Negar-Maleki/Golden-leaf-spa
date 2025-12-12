@@ -46,13 +46,13 @@ function Stats({ confirmedBookings, recentBookings, numDays, servicesLength }) {
       <Stat
         title="Total Check-ins"
         value={checkIns}
-        color="blue"
+        color="brand"
         icon={<HiOutlineCalendarDays />}
       />
       <Stat
         title="Occupancy Rate"
         value={Math.round(occupancyRate) + "%"}
-        color="blue"
+        color="yellow"
         icon={<HiOutlineChartBar />}
       />
     </>

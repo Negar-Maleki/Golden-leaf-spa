@@ -4,6 +4,8 @@ import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
 import { useRecentBookings } from "../dashboard/useRecentBooking";
 import { isSameDay } from "date-fns";
+import Spinner from "../../ui/Spinner";
+import TodayItem from "./TodayItem";
 
 const StyledToday = styled.div`
   /* Box */
@@ -39,19 +41,34 @@ const NoActivity = styled.p`
 `;
 
 function TodayActivity() {
-  const { bookings } = useRecentBookings();
+  const { bookings, isLoading } = useRecentBookings();
   const today = new Date().toISOString();
-  console.log(bookings);
-  const todayBookings = bookings.filter((booking) =>
-    isSameDay(new Date(booking.date), today)
-  );
-  console.log(todayBookings);
 
+  let todayBookings = bookings
+    .filter(
+      (booking) =>
+        booking.status === "CONFIRMED" || booking.status === "PENDING"
+    )
+    .filter((booking) => isSameDay(new Date(booking.date), today));
+  console.log(todayBookings);
   return (
     <StyledToday>
       <Row type="horizontal">
         <Heading as="h2">Today</Heading>
       </Row>
+      {!isLoading ? (
+        todayBookings.length > 0 ? (
+          <TodayList>
+            {todayBookings.map((booking) => (
+              <TodayItem key={booking._id} activity={booking}></TodayItem>
+            ))}
+          </TodayList>
+        ) : (
+          <NoActivity>No activity for today.</NoActivity>
+        )
+      ) : (
+        <Spinner />
+      )}
     </StyledToday>
   );
 }
